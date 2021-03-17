@@ -63,3 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # devise
 gem 'devise'
 gem 'omniauth-twitter'
+
+# Hirb
+gem 'hirb'
+gem 'hirb-unicode'
