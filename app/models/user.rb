@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
+  has_many :reviews
+
+  # uploaderを実装したいクラスに以下のコードを追加
+  mount_uploader :image, ImageUploader
 end

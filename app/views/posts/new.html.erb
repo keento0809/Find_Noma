@@ -1,17 +1,44 @@
 <h1>Posts here!</h1>
 
-<%= form_with(model: @post, local: true) do |f| %>
+<%= form_with(model: @post, local:true) do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
 
-    <p><%= f.label :cafename, "Cafename" %></p>
-    <%= f.text_field :cafename %> 
-    <p><%= f.label :comment, "Comment" %></p>
-    <%= f.text_area :comment, placeholder: "Comment here" %>
+    <div class="field post_cafename">
+        <p><%= f.label :cafename, "Cafename" %></p> 
+        <%= f.text_field :cafename %>
+    </div>
+    
+    <div class="field wifi">
+        <%= f.label :wifi %>
+        <%= f.check_box :wifi, {}, :as => :boolean %>
+    </div>
 
-    <%= f.file_field :img, id: "image" %>
+    <div class="field star">
+        <%= f.label :rate %>
+        <%= f.hidden_field :rate %>
+    </div>    
+    
+    <div class="field post_comment">
+        <p><%= f.label :comment, "Comment" %></p>
+        <%= f.text_area :comment, placeholder: "Comment here" %>
+    </div>
 
-    <div class="">
-        <%= f.submit "Create" %>
+    <div class="field post_image">
+        <%= f.file_field :img, id: "image" %>
+    </div>
+
+    <script>
+        $('#star').raty({
+            size : 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn: '<%= asset_path('star-on.png') %>',
+            // scoreName: 'comment[rate]',
+            half: false
+        });
+    </script>
+
+    <div class="field post_submit">
+        <%= f.submit "SUBMIT" %>
     </div>
 <% end %>
 

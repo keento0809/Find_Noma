@@ -10,6 +10,7 @@
         <%# ここに新着投稿一覧を表示 %>
         <% @posts.each do |post|  %>
             <section>
+                <span><%= post.cafename %></span>
                 <span><%= post.comment %></span>
                 <span><%= link_to "DELETE", post_path(post.id), method: :delete %></span>
             </section>

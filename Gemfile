@@ -67,3 +67,6 @@ gem 'omniauth-twitter'
 # Hirb
 gem 'hirb'
 gem 'hirb-unicode'
+
+# 画像アップロード
+gem 'carrierwave'

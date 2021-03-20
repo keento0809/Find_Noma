@@ -1,12 +1,13 @@
 <h2>User info</h2>
 
-<ul>
+<ul class="user_info">
     <li>
         <%#= ユーザー画像を表示する %>
+        <img src=<%= @user.image %> class="icon-image" srcset="">
     </li>
     <li>
         <h3>User name</h3>
-        <%#= @user.name %>
+        <%= @user.username %>
     </li>
     <li>
         <h3>Email</h3>
