@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+$base-color: #fff;
+
+body {
+  background-image: image-url("okinaw.jpeg");
+  background-size: cover;
+  color: $base-color;
+
+  .header-navi {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 main {
   width: 400px;
   margin: 0 auto;

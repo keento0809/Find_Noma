@@ -1,10 +1,19 @@
-<h2>FindNomacafe</h2>
-<p>Welcome, Member No. <%= @user.id %>, <%= @user.username %>!</p>
 
 <div class="container">
+    <section class="title">
+        <h2>FindNomacafe</h2>
+        <p>Welcome, Member No. <%= @user.id %>, <%= @user.username %>!</p>
+        <%= link_to "POST NEW", new_post_path %>
+    </section>
     <div class="sub-container new">
         <h3>New Posts</h3>
         <%# ここに新着投稿一覧を表示 %>
+        <% @posts.each do |post|  %>
+            <section>
+                <span><%= post.comment %></span>
+                <span><%= link_to "DELETE", post_path(post.id), method: :delete %></span>
+            </section>
+        <% end %>
     </div>
     <div class="sub-container">
         <h3>Popular Posts</h3>
@@ -12,6 +21,7 @@
     <div class="sub-container">
         <h3>Your Posts</h3>
         <%# ここに自分の投稿を投稿日時順に表示 %>
+        
     </div>
 </div>
 

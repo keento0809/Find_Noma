@@ -1,10 +1,18 @@
 <h1>Posts here!</h1>
 
 <%= form_with(model: @post, local: true) do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+
+    <p><%= f.label :cafename, "Cafename" %></p>
+    <%= f.text_field :cafename %> 
     <p><%= f.label :comment, "Comment" %></p>
     <%= f.text_area :comment, placeholder: "Comment here" %>
 
     <%= f.file_field :img, id: "image" %>
 
-    <p><%= f.submit "Create" %></p>
+    <div class="">
+        <%= f.submit "Create" %>
+    </div>
 <% end %>
+
+<p><%= link_to "TOP", root_url %> </p>
