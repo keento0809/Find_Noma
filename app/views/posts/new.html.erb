@@ -1,21 +1,25 @@
 <h1>Posts here!</h1>
 
 <%= form_with(model: @post, local:true) do |f| %>
+    <!-- user_idの送信 -->
     <%= f.hidden_field :user_id, :value => current_user.id %>
 
+    <!-- Cafename -->
     <div class="field post_cafename">
         <p><%= f.label :cafename, "Cafename" %></p> 
         <%= f.text_field :cafename %>
     </div>
     
+    <!-- wifi有無 -->
     <div class="field wifi">
         <%= f.label :wifi %>
         <%= f.check_box :wifi, {}, :as => :boolean %>
     </div>
 
-    <div class="field star">
-        <%= f.label :rate %>
-        <%= f.hidden_field :rate %>
+    <!-- Star review -->
+    <div class="field star" id="star">
+        <p><%= f.label :rate %></p>
+        <%= f.hidden_field :rate, id: :review_star %>
     </div>    
     
     <div class="field post_comment">
@@ -32,13 +36,15 @@
             size : 36,
             starOff: '<%= asset_path('star-off.png') %>',
             starOn: '<%= asset_path('star-on.png') %>',
-            // scoreName: 'comment[rate]',
-            half: false
+            starHalf: '<%= asset_path('star-half.png') %>',
+            <%# Postモデルのrateカラムに値を保存する %>
+            scoreName: 'post[rate]',
+            half: true
         });
     </script>
 
     <div class="field post_submit">
-        <%= f.submit "SUBMIT" %>
+        <%= f.submit "投稿" %>
     </div>
 <% end %>
 

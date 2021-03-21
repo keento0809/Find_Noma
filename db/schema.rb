@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_090910) do
+ActiveRecord::Schema.define(version: 2021_03_21_060623) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2021_03_20_090910) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "cafename"
+    t.float "rate"
+    t.boolean "outlet"
   end
 
   create_table "reviews", force: :cascade do |t|

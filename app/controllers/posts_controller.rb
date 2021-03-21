@@ -8,6 +8,7 @@ class PostsController < ApplicationController
       @post = Post.new(new_post_params)
       if @post.save!
         flash[:notice] = "New post created!"
+        redirect_to root_url
       else
         flash[:danger] = "Failed to create new post."
         redirect_to new_post_path
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
   private
 
   def new_post_params
-    params.require(:post).permit(:user_id, :cafename, :img, :comment)
+    params.require(:post).permit(:user_id, :cafename, :wifi, :rate, :comment, :img)
   end
+
 end

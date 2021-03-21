@@ -257,6 +257,7 @@ DEPENDENCIES
   hirb-unicode
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mini_magick
   omniauth-twitter
   pg (~> 1.1.4)
   puma (~> 5.0)

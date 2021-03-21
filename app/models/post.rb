@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
 
     belongs_to :user
-    has_many :reviews
+
+    # uploaderを実装したいクラスに以下のコードを追加
+  mount_uploader :img, ImageUploader
 end
