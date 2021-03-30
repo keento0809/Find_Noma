@@ -1,10 +1,11 @@
 
 <div class="container">
     <section class="title">
-        <h2>Explore Your Nomado-Cafe</h2>
+        <h2>TOP PAGE</h2>
         <p>Welcome, Member No. <%= @user.id %>, <%= @user.username %>!</p>
         <%= link_to "POST NEW", new_post_path %>
     </section>
+
     <div class="sub-container new">
         <h3>New Posts</h3>
         <div class="post-list">
@@ -12,21 +13,33 @@
             <%# ここに新着投稿一覧を表示 %>
             <% @posts.each do |post|  %>
                 <section>
-                    <span><%= post.cafename %></span>
-                    <span><%= post.comment %></span>
-                    <%# if false %>
-                    <div id="star-rate<%= post.id %>"></div>
-                    <%# end %>
-                    <div class="post-img">
-                        <% if post.img? %>
-                            <img class="cafe_img" src="<%= post.img %>">
-                        <% else %>
-                            <img class="cafe_img" src="/assets/default3.png">
+                    <%= link_to post_path(post.id),class:'post-link' do %>
+                        <span><%= post.cafename %></span>
+                        <span><%= post.comment %></span>
+                        <%# if false %>
+                        <div id="star-rate<%= post.id %>"></div>
+                        <%# end %>
+                        <div class="post-img">
+                            <% if post.img? %>
+                                <img class="cafe_img" src="<%= post.img %>">
+                            <% else %>
+                                <img class="cafe_img" src="/assets/default.png">
+                            <% end %>
+                        </div>
+                        <% if post.wifi? %>
+                            <span class="wifi-logo">WIFI</span>
                         <% end %>
-                    </div>
-                    <span><%= link_to "DELETE", post_path(post.id), method: :delete %></span>
+                        <% if post.outlet? %>
+                            <span class="outlet-logo">OUTLET</span>
+                        <% end %>
+
+                        <p><%= link_to "DELETE", post_path(post.id), method: :delete %></p>
+                    <% end %>
                 </section>
                 <script>
+                // test
+                // $(document).on('turbolinks:load',function() {}
+                    
                     $('#star-rate<%= post.id %>').raty({
                         size : 36,
                         starOff : '<%= asset_path('star-off.png') %>',
@@ -36,6 +49,7 @@
                         readOnly: true,
                         score: <%= post.rate %>,
                     });
+                
                 </script>
             <% end %>
         </div>
@@ -47,6 +61,11 @@
         <h3>Your Posts</h3>
         <%# ここに自分の投稿を投稿日時順に表示 %>
         
+    </div>
+
+    <%# javascriptで遷移できるように実装する %>
+    <div class="about">
+        <p>この下に本web applicationの概要とノマドカフェの説明を記述</p>
     </div>
 </div>
 

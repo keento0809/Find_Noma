@@ -11,9 +11,11 @@
     </div>
     
     <!-- wifi有無 -->
-    <div class="field wifi">
+    <div class="field wifi outlet">
         <%= f.label :wifi %>
         <%= f.check_box :wifi, {}, :as => :boolean %>
+        <%= f.label :outlet %>
+        <%= f.check_box :outlet, {}, :as => :boolean %>
     </div>
 
     <!-- Star review -->

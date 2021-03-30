@@ -17,6 +17,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    # find_by(params[:id])ではなぜかidが全て初めのidになってしまう。
+    # id: params[:id]とすることで解決
+    @post = Post.find_by(id: params[:id])
+  end
+
   def destroy
     @post = Post.find_by(params[:id])
     @post.destroy
@@ -26,7 +32,7 @@ class PostsController < ApplicationController
   private
 
   def new_post_params
-    params.require(:post).permit(:user_id, :cafename, :wifi, :rate, :comment, :img)
+    params.require(:post).permit(:user_id, :cafename, :wifi, :outlet, :rate, :comment, :img)
   end
 
 end
