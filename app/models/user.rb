@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  has_many :likes
 
   # ゲストログイン機能の実装
   def self.guest
@@ -12,6 +13,10 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       # user.confirmed_at = Time.now # Confirmableを使用している場合は必要
     end
+  end
+
+  def liked_by?(post_id)
+    likes.where(post_id: post_id).exists?
   end
 
   # uploaderを実装したいクラスに以下のコードを追加

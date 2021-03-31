@@ -1,4 +1,10 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    @posts = Post.all
+  end
+
   def new
     @post = Post.new()
   end
@@ -20,7 +26,8 @@ class PostsController < ApplicationController
   def show
     # find_by(params[:id])ではなぜかidが全て初めのidになってしまう。
     # id: params[:id]とすることで解決
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find_by(params[:id])
+    # @post = Post.find_by(id: params[:id])
   end
 
   def destroy

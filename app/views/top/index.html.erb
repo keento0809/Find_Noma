@@ -26,6 +26,11 @@
                                 <img class="cafe_img" src="/assets/default.png">
                             <% end %>
                         </div>
+                        <% if current_user.liked_by?(post.id) %>
+                            <td>いいねを外す</td>
+                        <% else %>
+                            <td>いいね</td>
+                        <% end %>
                         <% if post.wifi? %>
                             <span class="wifi-logo">WIFI</span>
                         <% end %>
