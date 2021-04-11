@@ -1,0 +1,24 @@
+<%# web版・header(全てのページに適用) %>
+    <header>
+      <nav class="header-navi">
+        <section class="top-logo">
+          <span>FINDNOMACAFE</span>
+        </section>
+
+        <section class="navi-links">
+          <% if user_signed_in? %>
+            <%= link_to "My Page", users_show_path(current_user.id) %>
+            <a href="/">About</a>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign Up", new_user_registration_path %>
+            <%= link_to "Log In", new_user_session_path %>
+          <% end %>
+        </section>
+      </nav>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%# <h2>FindNomacafe</h2> %>
+    </header>
+    <%# web版・headerここまで %>
