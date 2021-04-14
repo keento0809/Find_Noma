@@ -77,3 +77,6 @@ gem 'hirb-unicode'
 # 画像アップロード
 gem 'carrierwave'
 gem 'mini_magick'
+
+# FontAwesome
+# gem 'font-awesome-sass'

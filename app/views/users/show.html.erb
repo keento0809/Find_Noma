@@ -1,4 +1,5 @@
-<h2>User info</h2>
+<% provide(:title, "My Page") %>
+<h2>My Page</h2>
 
 <ul class="user_info">
     <li>
@@ -15,6 +16,8 @@
     </li>
     
 </ul>
+
+<p>右側に自分の投稿追加？</p>
 
 <p></p>
 <p><%= link_to "Edit Profile", edit_user_registration_path(@user.id) %></p>

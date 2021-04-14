@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new()
+    @user = User.find_by(id: current_user.id)
   end
 
   def create
@@ -26,8 +27,8 @@ class PostsController < ApplicationController
   def show
     # find_by(params[:id])ではなぜかidが全て初めのidになってしまう。
     # id: params[:id]とすることで解決
-    @post = Post.find_by(params[:id])
-    # @post = Post.find_by(id: params[:id])
+    # @post = Post.find_by(params[:id])
+    @post = Post.find_by(id: params[:id])
   end
 
   def destroy

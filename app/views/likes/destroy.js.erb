@@ -1,0 +1,6 @@
+<%# alert('Bye bye'); %>
+<%# let num =  %>
+<%# const ab = document.getElementById('ttt') %>
+<%# console.log(ab); %>
+<%# j: escape_javascriptメソッドの省略形 %>
+document.getElementById('post_<%= @post.id %>').innerHTML = '<%= j(render @post) %>'

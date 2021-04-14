@@ -1,8 +1,9 @@
-<h1>Posts here!</h1>
+<h1>Post here!</h1>
+<span><%= @user.id %></span>
 
 <%= form_with(model: @post, local:true) do |f| %>
     <!-- user_idの送信 -->
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :user_id, :value => @user.id %>
 
     <!-- Cafename -->
     <div class="field post_cafename">
