@@ -1,54 +1,58 @@
-<h1>Post here!</h1>
-<span><%= @user.id %></span>
+<%# 要validation %>
+<div class="wrapper new-post">
+    <h1>Post here!</h1>
+    <span><%= @user.id %></span>
 
-<%= form_with(model: @post, local:true) do |f| %>
-    <!-- user_idの送信 -->
-    <%= f.hidden_field :user_id, :value => @user.id %>
+    <%= form_with(model: @post, local:true) do |f| %>
+        <!-- user_idの送信 -->
+        <%= f.hidden_field :user_id, :value => @user.id %>
 
-    <!-- Cafename -->
-    <div class="field post_cafename">
-        <p><%= f.label :cafename, "Cafename" %></p> 
-        <%= f.text_field :cafename %>
-    </div>
-    
-    <!-- wifi有無 -->
-    <div class="field wifi outlet">
-        <%= f.label :wifi %>
-        <%= f.check_box :wifi, {}, :as => :boolean %>
-        <%= f.label :outlet %>
-        <%= f.check_box :outlet, {}, :as => :boolean %>
-    </div>
+        <!-- Cafename -->
+        <div class="field post_cafename">
+            <p><%= f.label :cafename, "Cafename" %></p> 
+            <%= f.text_field :cafename %>
+        </div>
+        
+        <!-- wifi有無 -->
+        <div class="field wifi outlet">
+            <%= f.label :wifi %>
+            <%= f.check_box :wifi, {}, :as => :boolean %>
+            <%= f.label :outlet %>
+            <%= f.check_box :outlet, {}, :as => :boolean %>
+        </div>
 
-    <!-- Star review -->
-    <div class="field star" id="star">
-        <p><%= f.label :rate %></p>
-        <%= f.hidden_field :rate, id: :review_star %>
-    </div>    
-    
-    <div class="field post_comment">
-        <p><%= f.label :comment, "Comment" %></p>
-        <%= f.text_area :comment, placeholder: "Comment here" %>
-    </div>
+        <!-- Star review -->
+        <div class="field star" id="star">
+            <p><%= f.label :rate %></p>
+            <%= f.hidden_field :rate, id: :review_star %>
+        </div>    
+        
+        <div class="field post_comment">
+            <p><%= f.label :comment, "Comment" %></p>
+            <%= f.text_area :comment, placeholder: "Comment here" %>
+        </div>
 
-    <div class="field post_image">
-        <%= f.file_field :img, id: "image" %>
-    </div>
+        <div class="field post_image">
+            <%= f.label :image %><br />
+            <%= f.file_field :img, class: 'f-file' %>
+            <label for="img" id="p-image">ファイルを選択</label>
+        </div>
 
-    <script>
-        $('#star').raty({
-            size : 36,
-            starOff: '<%= asset_path('star-off.png') %>',
-            starOn: '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            <%# Postモデルのrateカラムに値を保存する %>
-            scoreName: 'post[rate]',
-            half: true
-        });
-    </script>
+        <script>
+            $('#star').raty({
+                size : 36,
+                starOff: '<%= asset_path('star-off.png') %>',
+                starOn: '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                <%# Postモデルのrateカラムに値を保存する %>
+                scoreName: 'post[rate]',
+                half: true
+            });
+        </script>
 
-    <div class="field post_submit">
-        <%= f.submit "投稿" %>
-    </div>
-<% end %>
-
-<p><%= link_to "TOP", root_url %> </p>
+        <div class="field post_submit">
+            <%= f.submit "Post" %>
+        </div>
+    <% end %>
+    <p><%= link_to "TOP", root_url %> </p>
+</div>

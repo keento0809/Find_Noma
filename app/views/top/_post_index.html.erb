@@ -1,0 +1,61 @@
+<%# パーシャルに書き換えをする　ここから　%>
+<% @posts.each do |post|  %>
+                <section class="post-section">
+                    <%= link_to post_path(post.id),class:'post-link' do %>
+                        <%# posterの横にユーザー画像を追加する %>
+                        <p class="poster-name"><%= post.user.username %></p>
+                        <div class="post-img">
+                            <% if post.img? %>
+                                <img class="cafe_img" src="<%= post.img %>">
+                            <% else %>
+                                <img class="cafe_img" src="/assets/default.png">
+                            <% end %>
+                        </div>
+                        <%# post sass用クラスを付与 %>
+                        <div class="post-tag">
+                            <p><%= post.cafename %></p>
+                            <%#= post.user_id %>
+                            <div id="star-rate<%= post.id %>", class="ratings"></div>
+                            <%# wifi,outletアイコン表示 %>
+                            <div class="logo-section">
+                                <% if post.wifi? %>
+                                    <span class="wifi mark">WIFI</span>
+                                <% end %>
+                                <% if post.outlet? %>
+                                    <span class="outlet mark">OUTLET</span>
+                                <% end %>
+                            </div>
+                            <%# いいね数表示 %>
+                            <%= post.likes.count %> Like
+                        </div>
+
+                        <%# いいね表示をこちらでは一旦非表示にする %>
+                        <% if false %>
+                        <% if current_user.liked_by?(post.id) %>
+                            <td>いいねを外す</td>
+                        <% else %>
+                            <td>いいね</td>
+                        <% end %>
+                        <% end %>
+                        <%# コメントアウトここまで %>
+
+                        <%#= link_to "DELETE", post_path(post.id), method: :delete %>
+                    <% end %>
+                </section>
+                <script>
+                // test
+                // $(document).on('turbolinks:load',function() {}
+                    
+                    $('#star-rate<%= post.id %>').raty({
+                        size : 36,
+                        starOff : '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf : '<%= asset_path('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: <%= post.rate %>,
+                    });
+                
+                </script>
+            <% end %>
+<%# パーシャルへ置き換え　ここまで %>

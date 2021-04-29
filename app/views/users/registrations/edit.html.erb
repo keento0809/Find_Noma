@@ -1,4 +1,18 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% provide(:title, 'Edit user') %>
+<% provide(:button_text, 'Update my account') %>
+
+<div class="wrapper edit_user">
+  <h2>Edit <%= resource_name.to_s.humanize %> info</h2>
+  <%= render 'form' %>
+  <% if false %>
+  <div class="gravatar_edit">
+    <%= gravatar_for @user %>
+    <a href="https://gravatar.com/emails" target="_blank" rel="noopener">change</a>
+  </div>
+  <% end %>
+</div>
+
+<% if false %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
@@ -41,8 +55,16 @@
   </div>
 <% end %>
 
+
+
 <p>Cancel my account</p>
+
+
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
+<% end %>
+<%# コメントアウトここまで %>
+
 <%= link_to "Back", :back %>
+

@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   end
 
   root 'top#index'
-  resources :posts
+  # likesをposts内にネストさせる。これにより、post_likes_pathなどとして
+  # 投稿に対していいねを付けるためのパスの指定が簡単になる
+  resources :posts do
+    resource :likes, only: [:create, :delete]
+  end
   resources :reviews
   post 'like/:id' => 'likes#create', as: 'create_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'

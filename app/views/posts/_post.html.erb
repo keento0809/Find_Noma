@@ -1,19 +1,20 @@
-<%# いいね機能 %>
+<%# いいね機能のパーシャル %>
 <%# remote: trueを付与する %>
-    <% if current_user.liked_by?(@post.id) %>
+<%# インスタンス変数ではなくローカル変数：postにて対応 %>
+    <% if current_user.liked_by?(post.id) %>
         <td>
-            <%= link_to destroy_like_path(@post), class: "like-link",
+            <%= link_to destroy_like_path(post), class: "like-link",
             method: :delete, remote: true do %>
                 <i class="fa fa-heart unlike-btn"></i>
             <% end %>
-            <%= @post.likes.count %>
+            <%= post.likes.count %> Like
         </td>
     <% else %>
         <td>
-            <%= link_to create_like_path(@post), class: "like-link",
+            <%= link_to create_like_path(post), class: "like-link",
             method: :post, remote: true do %>
                 <i class="fa fa-heart like-btn"></i>
             <% end %>
-            <%= @post.likes.count %>
+            <%= post.likes.count %> Like
         </td>
     <% end %>

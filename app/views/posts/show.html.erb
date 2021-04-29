@@ -1,10 +1,10 @@
 <% provide(:title, "#{@post.cafename}") %>
 
-<div class="post-container">
-    <section>
-                    <h2><%= @post.cafename %></h2>
+<div class="post-list">
+    <section class="post-section post-show">
+                    <h3><%= @post.cafename %></h3>
                         <%# 暫定的に表示 %>
-                        <p><%= @post.id %></p>
+                        <p>Posted by <%= @post.user.username %>, No.<%= @post.user_id %></p>
                         <div id="star-rate<%= @post.id %>"></div>
                         <div class="post-img">
                             <% if @post.img? %>
@@ -32,17 +32,20 @@
 
                         <% end %>
                         <%# wifi, outlet有無 %>
-                        <div class="logo-btn">
+                        <div class="logo-section">
                             <% if @post.wifi? %>
-                                <span class="wifi-logo">WIFI</span>
+                                <span class="wifi mark">WIFI</span>
                             <% end %>
                             <% if @post.outlet? %>
-                                <span class="outlet-logo">OUTLET</span>
+                                <span class="outlet mark">OUTLET</span>
                             <% end %>
                         </div>
 
-                        <p><%= link_to "DELETE", post_path(@post.id), method: :delete %></p>
+                        <% if @post.user_id == current_user.id %>
+                            <p><%= link_to "DELETE", post_path(@post.id), method: :delete %></p>
+                        <% end %>
     </section>
+    <%#= link_to "TOP", root_url %>
 
                 <script>
                 // test

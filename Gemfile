@@ -78,5 +78,6 @@ gem 'hirb-unicode'
 gem 'carrierwave'
 gem 'mini_magick'
 
-# FontAwesome
-# gem 'font-awesome-sass'
+# ページネーション
+gem 'kaminari'
+

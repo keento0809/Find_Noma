@@ -1,24 +1,51 @@
-<%# web版・header(全てのページに適用) %>
-    <header>
-      <nav class="header-navi">
-        <section class="top-logo">
-          <span>FINDNOMACAFE</span>
-        </section>
+<%# web版・header(全てのページに適用?) 一旦コメントアウトする %>
+<% if false %>
 
-        <section class="navi-links">
+    <header id="navbar">
+      <nav class="header-navi"> <%# position:ralative; %>
+
+        <ul class="navi-links">
+          <a href="#">FINDNOMACAFE</a>
           <% if user_signed_in? %>
-            <%= link_to "My Page", users_show_path(current_user.id) %>
-            <a href="/">About</a>
-            <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+            <li><%= link_to "My Page", users_show_path(current_user.id) %></li>
+            <li><a href="#">About</a></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <%= link_to "Sign Up", new_user_registration_path %>
-            <%= link_to "Log In", new_user_session_path %>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li><%= link_to "Log In", new_user_session_path %></li> 
           <% end %>
-        </section>
+          <p>a</p>
+        </ul>
       </nav>
 
+      <%# アラートコメントアウト中 %>
+      <% if false %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+      <% end %>
       <%# <h2>FindNomacafe</h2> %>
     </header>
-    <%# web版・headerここまで %>
+
+<% end %>
+<%# web版・header, コメントアウトここまで %>
+
+<header>
+  <a href="#" class="logo">FINDNOMACAFE</a>
+  <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+  <div class="closeMenu"><i class="fas fa-times"></i></div>
+  <nav>
+    <ul class="mainMenu">
+      <% if user_signed_in? %>
+        <li><%= link_to "My Page", users_show_path(current_user.id) %></li>
+        <li><a href="#">About</a></li>
+        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Sign Up", new_user_registration_path, class: "active" %></li>
+        <li><%= link_to "Log In", new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+  <div class="clearfix"></div>
+
+
+</header>

@@ -1,24 +1,37 @@
 <% provide(:title, "My Page") %>
-<h2>My Page</h2>
 
-<ul class="user_info">
-    <li>
-        <%#= ユーザー画像を表示する %>
-        <img src=<%= @user.image %> class="icon-image" srcset="">
-    </li>
-    <li>
-        
-       <strong><%= @user.username %></strong>
-    </li>
-    <li>
-        <h3>Email</h3>
-        <%= @user.email %>
-    </li>
-    
-</ul>
+<div class="user-wrapper">
+    <div class="user-container">
 
-<p>右側に自分の投稿追加？</p>
+        <ul class="user_info">
+            <li>
+                <h2>My Page</h2>
+            </li>
+            <li>
+                <%#= ユーザー画像を表示する %>
+                <img src=<%= @user.image %> class="icon-image" srcset="">
+            </li>
+            <li>
+                
+            <h2><%= @user.username %></h2>
+            </li>
+            <li>
+                <h3>Email：
+                    <%= @user.email %>
+                </h3>
+            </li>
+            
+        </ul>
 
-<p></p>
-<p><%= link_to "Edit Profile", edit_user_registration_path(@user.id) %></p>
-<p><%= link_to "TOP", root_url %></p>
+        <ul class="ownposts">
+            <div class="post-list">
+                <%= render 'posts/post_show' %>
+            </div>
+        </ul>
+
+    </div>
+    <div class="link-index">
+            <p><%= link_to "Edit Profile", edit_user_registration_path(@user.id) %></p>
+            <p><%= link_to "TOP", root_url %></p>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<%# 自分の投稿一覧を表示するパーシャル %>
+<% @user.myposts.each do |post|  %>
+<section class="post-section post-show">
+                        <h3><%= post.cafename %></h3>
+                        <%# 暫定的に表示 %>
+                        <p>Posted by <%= post.user.username %>, No.<%= post.user_id %></p>
+                        <div id="star-rate<%= post.id %>"></div>
+                        <div class="post-img">
+                            <% if post.img? %>
+                                <img class="cafe_img" src="<%= post.img %>">
+                            <% else %>
+                                <img class="cafe_img" src="/assets/default.png">
+                            <% end %>
+                        </div>
+                        <%# コメント %>
+                        <p id="ttt"><%= post.comment %></p>
+                        <%# いいね機能,現在非同期処理にて実行中 %>
+                        <%# いいね機能エラーのためコメントアウト中 %>
+
+                        <p id="post_<%= post.id %>">
+                            <%= render 'posts/post', post: post %>
+                        </p>
+                        <% if false %>
+
+                        <% if current_user.liked_by?(post.id) %>
+                            <td><%= link_to "いいねを外す", destroy_like_path(post), method: :delete %>
+                            <%= post.likes.count %></td>
+                        <% else %>
+                            <%# リンクを付与するためにviewを編集 %>
+                            <td><%= link_to "いいね!", create_like_path(post), method: :post %>
+                            <%= post.likes.count %></td>
+                        <% end %>
+
+                        <% end %>
+                        <%# コメントアウトここまで %>
+                        <%# wifi, outlet有無 %>
+                        <div class="logo-section">
+                            <% if post.wifi? %>
+                                <span class="wifi mark">WIFI</span>
+                            <% end %>
+                            <% if post.outlet? %>
+                                <span class="outlet mark">OUTLET</span>
+                            <% end %>
+                        </div>
+
+                        <p><%= link_to "DELETE", post_path(post.id), method: :delete %></p>
+                    </section>
+<% end %>

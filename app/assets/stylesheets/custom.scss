@@ -13,9 +13,16 @@ $cRed: red;
 
 /* universal */
 
-body {
+* {
+  // font-family: "Poppins";
   margin: 0;
+  padding: 0;
+  font-family: "Orelega One", cursive;
+}
+
+body {
   background-image: image-url("ogasuta458A7873_TP_V.jpeg");
+  -webkit-box-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
   color: $base-color;
@@ -24,7 +31,7 @@ body {
 }
 
 main {
-  max-width: 600px;
+  max-width: 1000px;
   margin: 0 auto;
   text-align: center;
 
@@ -32,75 +39,303 @@ main {
     text-decoration: none;
     color: inherit;
   }
+}
 
-  .post-list {
-    display: flex;
-    justify-content: space-around;
+/* top/index.html */
 
-    & section {
-      // background: #000;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 8%;
-      // padding: 0.4em 2em;
-      cursor: pointer;
+.sub-container {
+  margin: 30px 0;
 
-      & .post-link {
-        display: inline-block;
-        padding: 1em 2em;
-      }
+  h2 {
+    padding-bottom: 20px;
+  }
 
-      & a {
-        color: inherit;
-        text-decoration: none;
-      }
+  .pages > .pagination {
+    margin: 30px;
+  }
+}
 
-      & .logo-btn {
-        margin: 1em 0;
+/* user */
 
-        // wifi, outletボタン
-        & span {
-          border: 1px solid #000;
-          border-radius: 8px;
-          padding: 2px 0.6em;
-        }
-        .wifi-logo {
-          background: #0059ff;
-        }
-        .outlet-logo {
-          background-color: #2ef114;
+.user-container {
+  display: flex;
+  justify-content: space-around;
+
+  .user_info > li > h2 {
+    margin-bottom: 10px;
+  }
+}
+
+/* post */
+
+.post-list {
+  display: flex;
+  justify-content: space-around;
+  // overflow: hidden;
+
+  .post-section {
+    margin-left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8%;
+    box-shadow: 8px 8px 50px #000;
+    cursor: pointer;
+
+    .post-link {
+      display: inline-block;
+      padding: 1em 2em;
+
+      .post-tag {
+        padding: 10px 40px;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 8px;
+        z-index: 2;
+
+        img {
+          width: 20px;
+          height: 20px;
+          // font-size: 10px;
         }
       }
     }
 
-    .cafe_img {
-      width: 100px;
-      height: 100px;
-      border-radius: 8%;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
+
+    .logo-section {
+      margin: 1em 0;
+
+      // wifi, outletボタン
+      & .mark {
+        // border: 1px solid #000;
+        border-radius: 20px;
+        padding: 2px 0.6em;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+        z-index: 1;
+        font-weight: 400;
+        transition: 0.5s;
+        overflow: hidden;
+
+        &::before {
+          content: " ";
+          // transform: skewX(5deg) translateX(0);
+          transition: 0.5s;
+        }
+      }
+      .outlet,
+      .wifi {
+        position: relative;
+        color: #000;
+        font-weight: 800;
+        // background: linear-gradient(to bottom, rgb(21, 224, 65), transparent);
+      }
+
+      .wifi {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 20px;
+          background: linear-gradient(to top, rgb(40, 99, 226), transparent);
+        }
+      }
+
+      .outlet {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 20px;
+          background: linear-gradient(to bottom, rgb(21, 224, 65), transparent);
+        }
+      }
+    }
+  }
+  .post-section.post-show {
+    padding: 20px;
+  }
+
+  .cafe_img {
+    width: 100px;
+    height: 100px;
+    border-radius: 8%;
   }
 }
 
 /* header */
 
-.header-navi {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
+header {
+  margin: 0;
+  padding: 0;
+  max-width: 1200px;
+  margin: 20px auto;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  // font-family: 'Poppins', sans-serif;
 
-  & section {
-    & a {
-      color: inherit;
-      text-decoration: none;
+  .logo {
+    color: #069370;
+    height: 60px;
+    font-size: 36px;
+    padding-left: 20px;
+    line-height: 60px;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 700;
+    float: left;
+    text-decoration: none;
+  }
+
+  nav {
+    float: right;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+
+      li {
+        list-style: none;
+
+        a {
+          display: block;
+          margin: 10px 0;
+          padding: 10px 20px;
+          text-decoration: none;
+          border-radius: 25px;
+          color: #262626;
+
+          &:hover {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+  }
+
+  .clearfix {
+    clear: both;
+  }
+}
+
+.wrapper {
+  width: 400px;
+  height: 500px;
+  // color: #000;
+  top: 50%;
+  left: 50%;
+  padding: 60px 30px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  box-shadow: 8px 8px 50px #000;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8%;
+    // font-family: Courgette;
+    // font-size: 13px;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    outline: none;
+    height: 30px;
+    font-size: 16px;
+    opacity: 1;
+    color: #fff;
+  }
+
+  input[type="submit"] {
+    margin-top: 10px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    height: 35px;
+    background: #f6648b;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px #000;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  a {
+    font-size: 16px;
+    text-decoration: none;
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 1;
+      // 文字を強調したい？
+    }
+  }
+
+  .bottom-text {
+    display: flex;
+    justify-content: space-between;
+
+    .field > label {
+      width: 100px;
+    }
+
+    input {
+      width: 10%;
+    }
+
+    a {
+      // display: inline-block;
     }
   }
 }
 
-header > p {
-  text-align: center;
+.wrapper.sign-up {
+  height: 600px;
+  transform: translate(-50%, -40%);
+}
+.wrapper.new-post {
+  height: 700px;
+  transform: translate(-50%, -32%);
 }
 
-/* log in */
+#overlay-area {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: -5;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+}
 
 /* form */
 
@@ -124,6 +359,52 @@ select,
   }
 }
 
+form {
+  .field {
+    input[type="file"] {
+      display: none;
+    }
+
+    #user_img,
+    #p-image {
+      background: #39f;
+      font-size: 0.7rem;
+      padding: 6px 8px;
+      border-radius: 8px;
+      display: inline-block;
+      position: relative;
+      // transform: translateX(-70%);
+      margin-top: 3px;
+      margin-right: 8px;
+      margin-bottom: 20px;
+
+      &:hover {
+        opacity: 0.8;
+        transition: 0.3s ease-out;
+      }
+      &::after {
+        content: "選択されていません";
+        // color: #333;
+        font-size: 14px;
+        height: 20px;
+        line-height: 20px;
+        position: absolute;
+        right: -140px;
+        top: calc(50% - 10px);
+      }
+      &.changed {
+        // transform: translateX(0);
+      }
+      &.changed::after {
+        content: "";
+      }
+    }
+    .filename {
+      font-size: 12px;
+    }
+  }
+}
+
 /* posts */
 
 // 応急処置
@@ -136,10 +417,113 @@ select,
 /* footer */
 
 footer {
-  background-color: red;
+  // transform: translateY(2500%);
+  background: transparent;
+
+  .socials {
+    a {
+      width: 25px;
+      height: 25px;
+      display: inline-block;
+      border: none;
+      // border: 0.2px solid #fff;
+      border-radius: 50%;
+      margin: 0 5px;
+
+      &:nth-child(1) {
+        background: #3b5998;
+      }
+      &:nth-child(2) {
+        background: #55acee;
+      }
+      &:nth-child(3) {
+        background: #bd018c;
+      }
+    }
+  }
+}
+
+/* like btn */
+
+.like-link {
+  text-decoration: none;
+}
+
+// .like-link:hover {
+//   background-color: #fff !important;
+// }
+
+.line-btn {
+  font-size: 15px;
+  color: #808080;
+}
+
+.unlike-btn {
+  font-size: 15px;
+  color: #e54747;
+}
+
+.closeMenu {
+  display: none;
 }
 
 // ここからレスポンシブデザインの記述
+
+// header用
+@media (max-width: 1200px) {
+  header {
+    margin: 20px;
+  }
+}
+@media (max-width: 768px) {
+  header {
+    .logo {
+      font-size: 24px;
+      padding-left: 30px;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .logo {
+    padding-left: 20px;
+  }
+  .menu-toggle {
+    display: block;
+    margin: 20px;
+    height: 40px;
+    margin: 7.5px 30px;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+    color: #069370;
+
+    &::before {
+      // content: "\f0c9";
+      // font-family: fontAwesome;
+      line-height: 40px;
+    }
+  }
+  .menu-toggle.change {
+    display: none;
+    color: blue;
+  }
+  .closeMenu {
+    display: block;
+    margin: 20px;
+    height: 40px;
+    margin: 7.5px 30px;
+    text-align: center;
+  }
+  nav {
+    display: none;
+  }
+}
+@media (min-width: 481px) {
+  .menu-toggle {
+    display: none;
+  }
+}
 
 // iPhoneXR,11,11ProMax,XR
 @media screen and(max-width:414px) {
