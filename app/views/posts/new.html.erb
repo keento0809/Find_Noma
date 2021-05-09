@@ -1,58 +1,83 @@
 <%# 要validation %>
-<div class="wrapper new-post">
-    <h1>Post here!</h1>
-    <span><%= @user.id %></span>
+<div class="bg-wrapper">
+    <div class="wrapper new-post">
+        <h1>Post here!</h1>
+        <% if false %>
+        <span><%= @user.id %></span>
+        <% end %>
 
-    <%= form_with(model: @post, local:true) do |f| %>
-        <!-- user_idの送信 -->
-        <%= f.hidden_field :user_id, :value => @user.id %>
+        <%= form_with(model: @post, local:true) do |f| %>
+            <!-- user_idの送信 -->
+            <%= f.hidden_field :user_id, :value => @user.id %>
 
-        <!-- Cafename -->
-        <div class="field post_cafename">
-            <p><%= f.label :cafename, "Cafename" %></p> 
-            <%= f.text_field :cafename %>
-        </div>
-        
-        <!-- wifi有無 -->
-        <div class="field wifi outlet">
-            <%= f.label :wifi %>
-            <%= f.check_box :wifi, {}, :as => :boolean %>
-            <%= f.label :outlet %>
-            <%= f.check_box :outlet, {}, :as => :boolean %>
-        </div>
+            <!-- Cafename -->
+            <div class="field post_cafename">
+                <p><%= f.label :cafename, "Cafename" %></p> 
+                <%= f.text_field :cafename %>
+            </div>
+            
+            <!-- wifi及びコンセント有無 -->
+            <div class="field wifi outlet block">
+                <%= f.label :wifi, class: 'block-wifi' %>
+                <%= f.check_box :wifi, {}, :as => :boolean %>
+                <%= f.label :outlet, class: 'block-outlet' %>
+                <%= f.check_box :outlet, {}, :as => :boolean %>
+            </div>
 
-        <!-- Star review -->
-        <div class="field star" id="star">
-            <p><%= f.label :rate %></p>
-            <%= f.hidden_field :rate, id: :review_star %>
-        </div>    
-        
-        <div class="field post_comment">
-            <p><%= f.label :comment, "Comment" %></p>
-            <%= f.text_area :comment, placeholder: "Comment here" %>
-        </div>
+            <!--　checkboxをtoggleに置き換える -->
+            <% if false %>
+            <div class="field wifi outlet">
+                <%= f.label :wifi %>
+                <%#= f.check_box :wifi, { id="rounded-wifi" }, :as => :boolean %>
+                <%= f.label :outlet %>
+                <%#= f.check_box :outlet, { id="rounded-outlet" }, :as => :boolean %>
+            </div>
+            <% end %>
 
-        <div class="field post_image">
-            <%= f.label :image %><br />
-            <%= f.file_field :img, class: 'f-file' %>
-            <label for="img" id="p-image">ファイルを選択</label>
-        </div>
+            <!-- Star review -->
+            <div class="field star" id="star">
+                <p><%= f.label :rate %></p>
+                <%= f.hidden_field :rate, id: :review_star %>
+            </div>    
+            
+            <div class="field post_comment">
+                <p><%= f.label :comment, "Comment" %></p>
+                <%= f.text_area :comment, placeholder: "Comment here" %>
+            </div>
 
-        <script>
-            $('#star').raty({
-                size : 36,
-                starOff: '<%= asset_path('star-off.png') %>',
-                starOn: '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                <%# Postモデルのrateカラムに値を保存する %>
-                scoreName: 'post[rate]',
-                half: true
-            });
-        </script>
+            <% if false %>
+            <div class="field">
+                <%= f.label :image, "Image" %><br />
+                <%= f.file_field :image, class: 'f-file' %>
+                <label for="users_image" id="user_img">ファイルを選択</label>
+            </div>
+            <% end %>
 
-        <div class="field post_submit">
-            <%= f.submit "Post" %>
-        </div>
-    <% end %>
-    <p><%= link_to "TOP", root_url %> </p>
+            <div class="field">
+                <%# f.labeとf.file_fieldに付与するものはmount_uploaderで定義した
+                値と同じ値でないと画像が正しく保存されない %>
+                <%= f.label :img, "Image" %><br />
+                <%= f.file_field :img, class: 'f-file' %>
+                <%# f.file_fieldのidの値と、label forの値を一致させる必要がある！ %>
+                <label for="post_img" id="p-img">ファイルを選択</label>
+            </div>
+
+            <script>
+                $('#star').raty({
+                    size : 36,
+                    starOff: '<%= asset_path('star-off.png') %>',
+                    starOn: '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    <%# Postモデルのrateカラムに値を保存する %>
+                    scoreName: 'post[rate]',
+                    half: true
+                });
+            </script>
+
+            <div class="field post_submit">
+                <%= f.submit "Post" %>
+            </div>
+        <% end %>
+        <p><%= link_to "TOP", root_url %> </p>
+    </div>
 </div>

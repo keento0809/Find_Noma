@@ -19,14 +19,18 @@
                             <%# wifi,outletアイコン表示 %>
                             <div class="logo-section">
                                 <% if post.wifi? %>
-                                    <span class="wifi mark">WIFI</span>
+                                    <%# <span class="wifi mark">WIFI</span> %>
+                                    <span class="wifi mark"><i class="fas fa-wifi"></i></span>
                                 <% end %>
                                 <% if post.outlet? %>
-                                    <span class="outlet mark">OUTLET</span>
+                                    <%# <span class="outlet mark">OUTLET</span> %>
+                                    <span class="outlet mark"><i class="fas fa-plug"></i></span>
                                 <% end %>
                             </div>
-                            <%# いいね数表示 %>
-                            <%= post.likes.count %> Like
+                            <div class="like-counts">
+                                <%# いいね数表示 %>
+                                <%= post.likes.count %> Like
+                            </div>
                         </div>
 
                         <%# いいね表示をこちらでは一旦非表示にする %>

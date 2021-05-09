@@ -18,29 +18,18 @@
                         <%# いいね機能,現在非同期処理にて実行中 %>
                         <%# いいね機能エラーのためコメントアウト中 %>
 
-                        <p id="post_<%= post.id %>">
-                            <%= render 'posts/post', post: post %>
-                        </p>
-                        <% if false %>
-
-                        <% if current_user.liked_by?(post.id) %>
-                            <td><%= link_to "いいねを外す", destroy_like_path(post), method: :delete %>
-                            <%= post.likes.count %></td>
-                        <% else %>
-                            <%# リンクを付与するためにviewを編集 %>
-                            <td><%= link_to "いいね!", create_like_path(post), method: :post %>
-                            <%= post.likes.count %></td>
-                        <% end %>
-
-                        <% end %>
-                        <%# コメントアウトここまで %>
+                        <div class="like-counts">
+                            <p id="post_<%= post.id %>">
+                                <%= render 'posts/post', post: post %>
+                            </p>
+                        </div>
                         <%# wifi, outlet有無 %>
                         <div class="logo-section">
                             <% if post.wifi? %>
-                                <span class="wifi mark">WIFI</span>
+                                <span class="wifi mark"><i class="fas fa-wifi"></i></span>
                             <% end %>
                             <% if post.outlet? %>
-                                <span class="outlet mark">OUTLET</span>
+                                <span class="outlet mark"><i class="fas fa-plug"></i></span>
                             <% end %>
                         </div>
 

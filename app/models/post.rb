@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+    validates :cafename, presence: true
+    validates :comment, presence: true, length: {minimum:2, maximum:100}
+
 
     has_many :likes, dependent: :destroy
     # usersテーブルとlikesテーブルの中間テーブル

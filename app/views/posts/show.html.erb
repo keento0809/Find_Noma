@@ -16,9 +16,11 @@
                         <%# コメント %>
                         <p id="ttt"><%= @post.comment %></p>
                         <%# いいね機能,現在非同期処理にて実行中 %>
-                        <p id="post_<%= @post.id %>">
-                            <%= render 'post', post: @post %>
-                        </p>
+                        <div class="like-counts">
+                            <p id="post_<%= @post.id %>">
+                                <%= render 'post', post: @post %>
+                            </p>
+                        </div>
                         <% if false %>
 
                         <% if current_user.liked_by?(@post.id) %>
@@ -34,10 +36,10 @@
                         <%# wifi, outlet有無 %>
                         <div class="logo-section">
                             <% if @post.wifi? %>
-                                <span class="wifi mark">WIFI</span>
+                                <span class="wifi mark"><i class="fas fa-wifi"></i></span>
                             <% end %>
                             <% if @post.outlet? %>
-                                <span class="outlet mark">OUTLET</span>
+                                <span class="outlet mark"><i class="fas fa-plug"></i></span>
                             <% end %>
                         </div>
 

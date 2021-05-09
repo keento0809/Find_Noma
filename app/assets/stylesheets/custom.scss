@@ -21,17 +21,21 @@ $cRed: red;
 }
 
 body {
-  background-image: image-url("ogasuta458A7873_TP_V.jpeg");
-  -webkit-box-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
+  // background-image: image-url("ogasuta458A7873_TP_V.jpeg");
+  // -webkit-box-size: cover;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background: #fff;
+  background: gray;
   color: $base-color;
   // 試験導入
   overflow: scroll;
 }
 
 main {
-  max-width: 1000px;
+  background: #000;
+  color: $base-color;
+  max-width: 1100px;
   margin: 0 auto;
   text-align: center;
 
@@ -39,12 +43,76 @@ main {
     text-decoration: none;
     color: inherit;
   }
+
+  .bg-wrapper {
+    background-image: image-url("ogasuta458A7873_TP_V.jpeg");
+    -webkit-box-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 800px;
+  }
 }
 
 /* top/index.html */
 
+.top-title {
+  height: 500px;
+  position: relative;
+  background-image: image-url("ogasuta458A7873_TP_V.jpeg");
+  -webkit-box-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 20px;
+
+  & h2 {
+    font-size: 40px;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+  }
+
+  .new-post-icon {
+    display: inline-block;
+    // max-width: 200px;
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    vertical-align: bottom;
+    background: #000;
+    padding: 10px 40px;
+    // margin-top: 10px;
+    // background: #000;
+    border-radius: 50%;
+    text-align: center;
+    transition: 0.2s ease-out;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 8px 12px 57px 0 #000;
+    }
+
+    .fa-edit {
+      margin-left: 5px;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+
+      &::after {
+        content: "Post New";
+      }
+    }
+    .new-post-logo {
+      // line-height: 2em;
+      padding-bottom: 5px;
+      padding-top: 0;
+      border-radius: 20%;
+    }
+  }
+}
+
 .sub-container {
-  margin: 30px 0;
+  padding: 30px 0;
 
   h2 {
     padding-bottom: 20px;
@@ -54,15 +122,29 @@ main {
     margin: 30px;
   }
 }
+.sub-container.new {
+  background: rgba(102, 179, 237, 1);
+}
+.sub-container.popular {
+  background: rgba(236, 64, 109, 1);
+}
+.sub-container.my-own {
+  // background: rgba(80, 188, 58, 1);
+  background: rgba(232, 234, 66, 1);
+}
 
 /* user */
+.user-wrapper {
+  padding: 40px 0;
 
-.user-container {
-  display: flex;
-  justify-content: space-around;
+  .user-container {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-around;
 
-  .user_info > li > h2 {
-    margin-bottom: 10px;
+    .user_info > li > h2 {
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -78,14 +160,20 @@ main {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 8%;
     box-shadow: 8px 8px 50px #000;
-    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 8px 12px 57px 0 #000;
+      cursor: pointer;
+    }
 
     .post-link {
       display: inline-block;
       padding: 1em 2em;
 
       .post-tag {
-        padding: 10px 40px;
+        padding: 10px 20px;
         background: rgba(255, 255, 255, 0.4);
         border-radius: 8px;
         z-index: 2;
@@ -94,6 +182,11 @@ main {
           width: 20px;
           height: 20px;
           // font-size: 10px;
+        }
+
+        .like-counts {
+          padding-top: 10px;
+          border-top: 2px solid rgba(255, 255, 255, 0.4);
         }
       }
     }
@@ -163,6 +256,11 @@ main {
   }
   .post-section.post-show {
     padding: 20px;
+
+    .like-counts {
+      padding-top: 10px;
+      border-top: 2px solid rgba(255, 255, 255, 0.4);
+    }
   }
 
   .cafe_img {
@@ -177,11 +275,14 @@ main {
 header {
   margin: 0;
   padding: 0;
-  max-width: 1200px;
-  margin: 20px auto;
-  background: #fff;
+  max-width: 1100px;
+  margin: 0px auto;
+  padding: 10px 0;
+  background: #000;
   box-sizing: border-box;
-  border-radius: 8px;
+  // border-radius: 8px;
+  // background: #000;
+  color: $base-color;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   // font-family: 'Poppins', sans-serif;
 
@@ -189,7 +290,7 @@ header {
     color: #069370;
     height: 60px;
     font-size: 36px;
-    padding-left: 20px;
+    padding-left: 40px;
     line-height: 60px;
     box-sizing: border-box;
     text-align: center;
@@ -204,6 +305,7 @@ header {
     ul {
       margin: 0;
       padding: 0;
+      padding-right: 40px;
       display: flex;
 
       li {
@@ -323,8 +425,56 @@ header {
   transform: translate(-50%, -40%);
 }
 .wrapper.new-post {
+  position: absolute;
   height: 700px;
-  transform: translate(-50%, -32%);
+  transform: translate(-50%, -50%);
+  background: rgba(57, 56, 59, 0.7);
+  border-radius: 4%;
+
+  .block {
+    // width: 200px;
+    position: relative;
+    clear: both;
+    /* margin-bottomのみ与える */
+    // margin: 0 0 25px;
+    // float: left;
+
+    .block-wifi,
+    .block-outlet {
+      width: 50px;
+      height: 25px;
+      box-sizing: border-box;
+      border: 3px solid;
+      float: left;
+      border-radius: 100px;
+      position: relative;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .block-wifi::before,
+    .block-outlet::before {
+      transition: 0.3s ease;
+      content: "";
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 1px;
+      top: 1px;
+      background: #fff;
+      box-sizing: border-box;
+      border: 3px solid;
+      color: #000;
+      border-radius: 100px;
+    }
+    input[type="checkbox"]:checked + .block-wifi,
+    input[type="checkbox"]:checked + .block-outlet {
+      background: #55e868;
+    }
+    input[type="checkbox"]:checked + .block-wifi::before,
+    input[type="checkbox"]:checked + .block-outlet::before {
+      left: 25px;
+    }
+  }
 }
 
 #overlay-area {
@@ -366,7 +516,7 @@ form {
     }
 
     #user_img,
-    #p-image {
+    #p-img {
       background: #39f;
       font-size: 0.7rem;
       padding: 6px 8px;
@@ -383,13 +533,13 @@ form {
         transition: 0.3s ease-out;
       }
       &::after {
-        content: "選択されていません";
+        content: "No image selected.";
         // color: #333;
         font-size: 14px;
         height: 20px;
         line-height: 20px;
         position: absolute;
-        right: -140px;
+        right: -120px;
         top: calc(50% - 10px);
       }
       &.changed {
